@@ -1,7 +1,11 @@
 import './App.css';
 import Container from './Components/Container';
+import CountTest from './Components/CountTest';
 import Counter from './Components/Counter';
+import FormTest from './Components/FormTest';
 import InputTest from './Components/InputTest';
+import ReducerTest from './Components/ReducerTest';
+import RefTest from './Components/RefTest';
 import User from './Components/User';
 import UserList from './Components/UserList';
 
@@ -33,7 +37,7 @@ function App() {
 
   return (
     <div>
-      <InputTest/>
+      <ReducerTest/>
     </div>
   );
 }
