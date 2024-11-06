@@ -17,7 +17,7 @@ const RefTest = () => {
 
     useEffect(()=>{
         refValue.current++;
-        varValue++;
+        varValue++; 
     })
     return (
         <div>
