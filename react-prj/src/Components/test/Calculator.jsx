@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 
 const Calculator = () => {
     const [number, setNumber] = useState({
-        number1: '',
-        number2: '',
-        result:''
+        number1: 0,
+        number2: 0,
+        result: 0
     })
     const inputNumber = e => {
         const {name, value} = e.target;

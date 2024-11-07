@@ -11,7 +11,7 @@ import User from './Components/User';
 import UserList from './Components/UserList';
 import HookTest from './Components/HookTest';
 import Calculator from './Components/test/Calculator';
-import Gallery from './Components/test/Gallery';
+import Gallery from './Components/test/gallery';
 
 function Multiply({num1, num2}){
   // useMemo

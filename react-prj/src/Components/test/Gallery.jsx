@@ -19,6 +19,7 @@ const Gallery = () => {
             setCount(count => count +1);
         }
     };
+    
     useEffect(()=>{
         if(count === 6){
             setCount(0)
