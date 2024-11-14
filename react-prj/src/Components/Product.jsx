@@ -6,8 +6,8 @@ import { addItem, deleteItem } from '../action/cartAction';
 const Product = (props) => {
     // store에 접근해서 state 가져오기
     const counter = useSelector(state => state.counter.count);
-
-    // dispatch 중비
+    
+    // dispatch 준비
     const dispatch = useDispatch();
 
     const handleIncrease = () => {
