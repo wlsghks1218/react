@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Routes, Route } from 'react-router-dom';
 import Main from '../Layout/Main';
 import data from '../../util/mock/data'
+import Detail from '../Detail/Detail'
 
 const Container = styled.div`
     width: 100%;
@@ -37,6 +38,7 @@ const Display = () => {
             <Body>
                 <Routes>
                     <Route path='/' element={<Main data={products}/>}/>
+                    <Route path='/detail/:pId' element={<Detail data={products}/>}/>
                 </Routes>
             </Body>
         </Container>

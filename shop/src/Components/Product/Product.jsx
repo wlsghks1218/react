@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import formatKoreanCurrency from '../../util/display/display';
+import { Link } from 'react-router-dom';
 
 const Item = styled.div`
     color: black;
@@ -27,15 +28,16 @@ const Item = styled.div`
 `;
 
 const Product = ({data}) => {
-    console.log(data);
     return (
-        <Item>
-            {/* <img src={"/images/product/" + data.main} alt="메인이미지" width='100%'/> */}
-            <img src={process.env.PUBLIC_URL + `/images/product/${data.main}`} alt="메인이미지" width='100%'/>
-            <h4>{data.title}</h4>
-            <p>{data.content}</p>
-            <span>{formatKoreanCurrency(data.price)}</span>
-        </Item>
+        <Link to={`/detail/${data.id}`} style={{textDecoration:'none'}}>
+            <Item>
+                {/* <img src={"/images/product/" + data.main} alt="메인이미지" width='100%'/> */}
+                <img src={process.env.PUBLIC_URL + `/images/product/${data.main}`} alt="메인이미지" width='100%'/>
+                <h4>{data.title}</h4>
+                <p>{data.content}</p>
+                <span>{formatKoreanCurrency(data.price)}</span>
+            </Item>
+        </Link>
     );
 };
 
