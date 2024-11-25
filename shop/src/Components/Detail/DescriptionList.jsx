@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import formatKoreanCurrency from '../../util/display/display';
+import { useDispatch, useSelector } from 'react-redux';
+import { addItem } from '../../action/cartAction';
+import { useNavigate } from 'react-router-dom';
 
 const StyledDescriptonList = styled.div`
      flex: 1;
@@ -61,10 +64,10 @@ const ButtonArea = styled.div`
 //     border : 1px solid #bcd530;
 // `;
 const MyButton = styled.button`
-    background-color : ${props => props.bg};
-    color : ${props => props.color || 'white'};
-    border : 1px solid ${props => props.border};
-    cursor : pointer;
+    background-color: ${props => props.$bg};
+    color: ${props => props.$color || 'white'};
+    border: 1px solid ${props => props.$border};
+    cursor: pointer;
 `;
 
 const DL = styled.dl`
@@ -87,7 +90,40 @@ const DD = styled.dd`
     color : #333;
 `;
 
+
 const DescriptionList = ({data}) => {
+    const cart = useSelector(state => state.cart);
+    const dispatch = useDispatch();
+    const nav = useNavigate();
+
+    const handleAddCartItem = () => {
+        const item={
+            id : data.id,
+            productName : data.title,
+            price : data.price,
+            count : 1
+        }
+
+        const inCart = cart.find(product => product.id === item.id)
+        console.log(inCart);
+
+
+        if(inCart){
+            // eslint-disable-next-line no-restricted-globals
+            const confirmAdd = confirm("동일한 상품이 있습니다. 수량을 1 증가시키겠습니까?");
+            if (confirmAdd) {
+                dispatch(addItem(item));
+            }
+        }else {
+            dispatch(addItem(item));
+            // eslint-disable-next-line no-restricted-globals
+            const confirmAdd = confirm('장바구니에 추가하였습니다. 장바구니로 이동하시겠습니까?');
+            if(confirmAdd){
+                nav('/cart');
+            }
+        }
+    }
+
     return (
         <StyledDescriptonList>
             <Title>{data.title}</Title>
@@ -103,8 +139,8 @@ const DescriptionList = ({data}) => {
                     <DD>3000원</DD>
                 </DL>
                 <ButtonArea>
-                    <MyButton bg='#fff' color='#333' border='gray'>장바구니</MyButton>
-                    <MyButton bg='#bcd530' color='#fff' border='#bcd530'>바로구매</MyButton>
+                    <MyButton $bg='#fff' $color='#333' $border='gray' onClick={handleAddCartItem}>장바구니</MyButton>
+                    <MyButton $bg='#bcd530' $color='#fff' $border='#bcd530'>바로구매</MyButton>
                 </ButtonArea>
             </InfoArea>
         </StyledDescriptonList>
