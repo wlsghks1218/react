@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, {keyframes} from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const SpinnerContainer = styled.div`
     display: flex;
@@ -22,11 +22,11 @@ const SpinnerMain = styled.div`
 `;
 
 const Spinner = () => {
-    return (
-        <SpinnerContainer>
-            <SpinnerMain/>
-        </SpinnerContainer>
-    );
+  return (
+    <SpinnerContainer>
+      <SpinnerMain/>
+    </SpinnerContainer>
+  );
 };
 
 export default Spinner;

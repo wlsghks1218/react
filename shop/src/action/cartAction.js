@@ -1,29 +1,28 @@
-import { ADD_ITEM, DELETE_ITEM, INCREASE_ITEM, DECREASE_ITEM } from "./type";
+import { ADD_ITEM, DECREASE_ITEM_COUNT, DELETE_ITEM, INCREASE_ITEM_COUNT } from "./type";
 
 function addItem(item){
-    return{
-        type : ADD_ITEM,
-        payload : item
-    }
+  return {
+    type : ADD_ITEM,
+    payload : item
+  }
 }
 function deleteItem(id){
-    return{
-        type : DELETE_ITEM,
-        payload : id
-    }
+  return {
+    type : DELETE_ITEM,
+    payload : id
+  }
 }
-function increaseItem(id){
-    return{
-        type : INCREASE_ITEM,
-        payload : id
-    }
+function increateItemCount(id){
+  return {
+    type : INCREASE_ITEM_COUNT,
+    payload : id
+  }
+}
+function decreateItemCount(id){
+  return {
+    type : DECREASE_ITEM_COUNT,
+    payload : id
+  }
 }
 
-function decreaseItem(id){
-    return{
-        type : DECREASE_ITEM,
-        payload : id
-    }
-}
-
-export {addItem, deleteItem, increaseItem, decreaseItem};
+export {addItem, deleteItem, increateItemCount, decreateItemCount}

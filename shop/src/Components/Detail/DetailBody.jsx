@@ -1,18 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 
-const DetailImg = styled.img`
-    width: 80%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    margin : auto;
-`;
-
-const DetailBody = ({detail}) => {
-    return (
-        <DetailImg src={`/images/product/${detail}`}/>               
-    );
-};
+function DetailBody(props) {
+  return (
+    <img src="" alt="" />
+  );
+}
 
 export default DetailBody;
