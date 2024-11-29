@@ -64,20 +64,24 @@ const Button = styled.button`
 `;
 
 const Login = () => {
-  
   const dispatch = useDispatch();
   const nav = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
   const [isValid, setIsValid] = useState(true);
-
+  console.log(rememberMe);
   const handleLogin = async (e) => {
     e.preventDefault();
 
     const response = await fetch("/api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({
+        username: username,
+        password: password,
+        "remember-me": rememberMe
+    }),
     });
 
     if(response.ok){
@@ -116,6 +120,15 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="비밀번호"
         />
+        <label>
+          <input
+            type="checkbox"
+            name="remember-me"
+            checked={rememberMe}
+            onChange={(e) => setRememberMe(e.target.checked)}
+          />
+          로그인 기억하기
+        </label>
         <Button type="submit">로그인</Button>
       </StyledForm>
       {!isValid && <IsValidate>유저 정보가 올바르지 않습니다.</IsValidate> }

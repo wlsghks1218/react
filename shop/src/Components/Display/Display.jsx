@@ -14,6 +14,7 @@ import BoardList from '../Board/BoardList';
 import BoardDetail from '../Board/BoardDetail';
 import BoardWrite from '../Board/BoardWrite';
 import Join from '../Login/Join';
+import MyPage from '../MyPage/MyPage';
 
 const Container = styled.div`
   width: 100%;
@@ -69,6 +70,7 @@ function Display(props) {
           <Route path='/board/:idx' element={<BoardDetail/>}/>
           <Route path='/write' element={<BoardWrite/>}/>
           <Route path='/join' element={<Join/>}/>
+          <Route path='/myPage' element={<MyPage/>}/>
         </Routes>
       </Body>
     </Container>

@@ -1,6 +1,7 @@
 import { LOGIN, LOGOUT } from "../action/type";
 
 const initialState = {
+  isAuthenticated: false,
   user : null
 };
 
@@ -9,11 +10,11 @@ const initialState = {
 const user = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN:
-      return {user : action.payload};
+      return { ...state, isAuthenticated: true, user: action.payload };
     case LOGOUT:
-      return {user : null};
+      return { ...state, isAuthenticated: false, user: null };
     default:
-      return state;
+      return { ...state, isAuthenticated: false, user: null };
   }
 }
 

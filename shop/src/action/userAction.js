@@ -1,3 +1,4 @@
+import axios from "axios";
 import { LOGIN, LOGOUT } from "./type";
 
 function login(user){
@@ -6,10 +7,11 @@ function login(user){
     payload : user
   }
 }
-function logout(){
+
+function logout() {
   return {
-    type : LOGOUT,
-  }
+    type: LOGOUT,
+  };
 }
 
 

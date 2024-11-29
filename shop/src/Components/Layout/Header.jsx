@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { logout } from '../../action/userAction';
+import axios from 'axios';
 
 const Wrapper = styled.div`
   position: relative;
@@ -56,12 +57,13 @@ const GnbItem = styled.li`
 `;
 
 function Header(props) {
-
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   const user = useSelector(state => state.user);
   const dispatch = useDispatch();
 
   console.log(user)
   const handleLogout = () => {
+    const response =  axios.post("/api/logout");
     dispatch(logout());
     console.log(user)
   }
@@ -78,7 +80,7 @@ function Header(props) {
                   ? <GnbItem><Link to='/login'>로그인</Link></GnbItem>
                   : <GnbItem><Link onClick={handleLogout}>로그아웃</Link></GnbItem>
                 }
-                <GnbItem><Link to='/join'>회원가입</Link></GnbItem>
+                {(!isAuthenticated)?<GnbItem><Link to='/join'>회원가입</Link></GnbItem> : <GnbItem><Link to='/myPage'>마이페이지</Link></GnbItem>}
                 <GnbItem><Link to='/cart'>장바구니</Link></GnbItem>
                 <GnbItem><Link to='/'>고객센터</Link></GnbItem>
                 <GnbItem><Link to='/board'>게시판</Link></GnbItem>

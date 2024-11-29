@@ -17,7 +17,6 @@ function Main({data}) {
   return (
     <>
       <MainBG/>
-      <Recently/>
       <ProductList data={data}/>
     </>
   );

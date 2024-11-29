@@ -87,10 +87,16 @@ const MyButton = styled.button`
 function DetailHead({data}) {
 
   const cart = useSelector(state => state.cart);
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   const dispatch = useDispatch();
   const nav = useNavigate();
   
   const handleAddCartItem = () => {
+    if(!isAuthenticated){
+      alert('로그인이 필요합니다.');
+      nav('/login');
+      return;
+    }
     const item = {
       id : data.id,
       productName : data.title,
